@@ -1,44 +1,61 @@
 import React from 'react';
-
+import Data from '../data/votes.json';
 class Votes extends React.Component {
     constructor(){
         super();
+        if (localStorage.getItem("votes")===null){
+            localStorage.setItem("votes",JSON.stringify(Data));
+        }
+
+        const votes= JSON.parse(localStorage.getItem("votes"));
+        
         this.state = {
-            person1:{up:50, down:27, active:"none",justVoted:false},
-            person2:{up:8, down:10, active:"none",justVoted:false},
-            person3:{up:50, down:27, active:"none",justVoted:false},
-            person4:{up:10, down:5, active:"none",justVoted:false},
+            votes,
         }
     }
 
-    handleChoose = (person, typeOfVote) => {
-        console.log("Esta votando por:", person);
-        console.log("Voto:", typeOfVote);
-        console.log(this.state[person]);
-        let modified = {...this.state[person]};
-        this.setState({
-            [person]: {...modified, active: typeOfVote},
-        })
+    componentDidMount(){
+        //let votes = this.state.votes;
+        //console.log(this.state.votes);
+        
 
     }
 
-    handleVote = (person) => {
-        console.log("Esta votando por:", person);
-        console.log(this.state[person]);
-        let data = { ...this.state[person] };
+    handleChoose = (perName, typeOfVote) => {
+
+        const [person] = this.state.votes.filter(per =>  (per.name===perName));
+        let modified = {...person, active: typeOfVote };
+        const votes = this.state.votes.map(per => per.name===perName ? modified : per);
+
+        this.setState({
+            votes: votes,
+        },() => {localStorage.setItem("votes",JSON.stringify(this.state.votes))});
+    }
+
+    handleVote = (perName) => {
+        const [person] = this.state.votes.filter(per =>  (per.name===perName));
+        //console.log("Esta votando por:", person);
+        //console.log(this.state[person]);
+        let data = { ...person };
+        console.log("La data es:", data);
+        let modified;
         if (data.justVoted) {
-            this.setState({ [person]: { ...data, justVoted: false, } })
+            modified = { ...data, justVoted: false, };
         } else {
             data.perc = this.calcPercentage(data);
             if (data.active == "up") {
-                this.setState({
-                    [person]: { ...data, up: data.up + 1, justVoted: true, },
-                })
+                modified = { ...data, up: data.up + 1, justVoted: true, };
+            } else if (data.active == "down") {
+                modified = { ...data, down: data.down + 1, justVoted: true, };
             } else {
-                this.setState({
-                    [person]: { ...data, down: data.down + 1, justVoted: true, },
-                })
+                alert("Please choose thumb up or thumb down!");
             }
+        }
+        
+        if (modified){
+            const votes = this.state.votes.map(per => per.name===perName ? modified : per);
+            console.log("Los vots al modificar", votes);
+            this.setState({votes},()=>{localStorage.setItem("votes",JSON.stringify(this.state.votes))});
         }
     }
 
@@ -51,6 +68,9 @@ class Votes extends React.Component {
     }
 
     render() {
+        let votes = this.state.votes;
+        let [person1]= votes.filter(per => per.name==="person1");
+        console.log("Los datos de person1",person1);
         return (
             <section class="voteSection">
                 <p class="voteSection__title">Votes</p>
@@ -61,12 +81,12 @@ class Votes extends React.Component {
                         <p class="voteBox__date">1 month ago in Entertainment</p>
                         <p class="voteBox__description">Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero.</p>
                         <div class="voteBox__vote" data-name="person1">
-                            <div class={`voteBox__btnUp ${this.state["person1"].active=="up" ? "voteBox__btn--active" : "voteBox__btn--inactive"} ${this.state["person1"].justVoted ? "btn--hidden" : "btn--noHidden"}`} id="person1_up" onClick={()=>this.handleChoose("person1","up")}> <i class="fa fa-thumbs-up"></i></div>
-                            <div class={`voteBox__btnDown ${this.state["person1"].active=="down" ? "voteBox__btn--active" : "voteBox__btn--inactive"} ${this.state["person1"].justVoted ? "btn--hidden" : "btn--noHidden"}`} id="person1_down" onClick={()=>this.handleChoose("person1","down")}> <i class="fa fa-thumbs-down"></i></div>
-                            <div class="voteBox__btnVote" id="person1_vote" onClick={()=>this.handleVote("person1")}>{this.state["person1"].justVoted ? "Vote again" : "Vote now"}</div>
+                            <div class={`voteBox__btnUp ${person1.active=="up" ? "voteBox__btn--active" : "voteBox__btn--inactive"} ${person1.justVoted ? "btn--hidden" : "btn--noHidden"}`} id="person1_up" onClick={()=>this.handleChoose("person1","up")}> <i class="fa fa-thumbs-up"></i></div>
+                            <div class={`voteBox__btnDown ${person1.active=="down" ? "voteBox__btn--active" : "voteBox__btn--inactive"} ${person1.justVoted ? "btn--hidden" : "btn--noHidden"}`} id="person1_down" onClick={()=>this.handleChoose("person1","down")}> <i class="fa fa-thumbs-down"></i></div>
+                            <div class="voteBox__btnVote" id="person1_vote" onClick={()=>this.handleVote("person1")}>{person1.justVoted ? "Vote again" : "Vote now"}</div>
                         </div>
-                        <div class="voteBox__barUp" data-name="person1" style={{ width: this.state["person1"].perc + "%" }}><strong class="voteBox__barText"> <i class="fa fa-thumbs-up"></i> {this.state["person1"].perc+"%"} </strong></div>
-                        <div class="voteBox__barDown" data-name="person1" style={{ width: (100-this.state["person1"].perc) + "%" }}><strong class="voteBox__barText">{(100 - this.state["person1"].perc)+"%"}<i class="fa fa-thumbs-down fa-flip-horizontal"></i></strong></div>
+                        <div class="voteBox__barUp" data-name="person1" style={{ width: person1.perc + "%" }}><strong class="voteBox__barText"> <i class="fa fa-thumbs-up"></i> {person1.perc+"%"} </strong></div>
+                        <div class="voteBox__barDown" data-name="person1" style={{ width: (100-person1.perc) + "%" }}><strong class="voteBox__barText">{(100 - person1.perc)+"%"}<i class="fa fa-thumbs-down fa-flip-horizontal"></i></strong></div>
                     </div>
 
                     <div class="voteBox voteBox--person2">
