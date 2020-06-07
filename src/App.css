@@ -303,6 +303,14 @@ header nav a {
   border: 0;
 }
 
+.btn--hidden {
+  display: none;
+}
+
+.btn--noHidden {
+  display: flex;
+}
+
 .voteBox__barUp {
   background: rgba(28,187,180,0.8);
   position: absolute;
