@@ -18,7 +18,7 @@ class VoteBox extends React.Component {
                 <div className={`voteBox__status ${person.perc>=50 ? "voteBox__status--Up" : "voteBox__status--Down"}`}><i className={`${person.perc>=50 ? "fa fa-thumbs-up" : "fa fa-thumbs-down fa-flip-horizontal" }`}></i></div>
                 <h3 className="voteBox__title">{person.title}</h3>
                 <p className="voteBox__date">{person.date}</p>
-                <p className="voteBox__description">{person.description}</p>
+                <p className="voteBox__description">{person.justVoted? "Thank you for voting" : person.description}</p>
                 <div className="voteBox__vote" >
                     <div className={`voteBox__btnUp ${person.active === "up" ? "voteBox__btn--active" : "voteBox__btn--inactive"} ${person.justVoted ? "btn--hidden" : "btn--noHidden"}`} id="person1_up" onClick={() => this.handleChoose(person.name, "up")}> <i className="fa fa-thumbs-up"></i></div>
                     <div className={`voteBox__btnDown ${person.active === "down" ? "voteBox__btn--active" : "voteBox__btn--inactive"} ${person.justVoted ? "btn--hidden" : "btn--noHidden"}`} id="person1_down" onClick={() => this.handleChoose(person.name, "down")}> <i className="fa fa-thumbs-down"></i></div>

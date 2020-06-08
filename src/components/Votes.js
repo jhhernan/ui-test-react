@@ -45,17 +45,18 @@ class Votes extends React.Component {
         if (data.justVoted) {
             modified = { ...data, justVoted: false, };
         } else {
-            data.perc = this.calcPercentage(data);
+
             if (data.active === "up") {
-                modified = { ...data, up: data.up + 1, justVoted: true, };
+                modified = { ...data, up: data.up + 1, justVoted: true, active: "none"};
             } else if (data.active === "down") {
-                modified = { ...data, down: data.down + 1, justVoted: true, };
+                modified = { ...data, down: data.down + 1, justVoted: true, active: "none"};
             } else {
                 alert("Please choose thumb up or thumb down!");
             }
         }
         
         if (modified){
+            modified.perc = this.calcPercentage(modified);
             const votes = this.state.votes.map(per => per.name===perName ? modified : per);
             this.setState({votes},()=>{localStorage.setItem("votes",JSON.stringify(this.state.votes))});
         }

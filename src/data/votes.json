@@ -1,8 +1,8 @@
 [
     {
         "name": "person1",
-        "up": 50,
-        "down": 27,
+        "up": 10,
+        "down": 12,
         "active": "none",
         "justVoted": false, 
         "title": "Kanye West",
