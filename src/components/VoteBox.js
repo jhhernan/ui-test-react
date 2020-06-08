@@ -15,7 +15,7 @@ class VoteBox extends React.Component {
 
         return (
             <div className={`voteBox voteBox--${person.name}`}>
-                <div className="voteBox__status voteBox__status--Up" data-name="person1"><i className="fa fa-thumbs-up"></i></div>
+                <div className={`voteBox__status ${person.perc>=50 ? "voteBox__status--Up" : "voteBox__status--Down"}`}><i className={`${person.perc>=50 ? "fa fa-thumbs-up" : "fa fa-thumbs-down fa-flip-horizontal" }`}></i></div>
                 <h3 className="voteBox__title">{person.title}</h3>
                 <p className="voteBox__date">{person.date}</p>
                 <p className="voteBox__description">{person.description}</p>
@@ -25,7 +25,7 @@ class VoteBox extends React.Component {
                     <div className="voteBox__btnVote" id="person1_vote" onClick={() => this.handleVote(person.name)}>{person.justVoted ? "Vote again" : "Vote now"}</div>
                 </div>
                 <div className="voteBox__barUp" style={{ width: person.perc + "%" }}><strong className="voteBox__barText"> <i className="fa fa-thumbs-up"></i> {person.perc + "%"} </strong></div>
-                <div className="voteBox__barDown" style={{ width: (100 - person.perc) + "%" }}><strong className="voteBox__barText">{(100 - person.perc) + "%"}<i className="fa fa-thumbs-down fa-flip-horizontal"></i></strong></div>
+                <div className="voteBox__barDown" style={{ width: (100 - person.perc) + "%" }}><strong className="voteBox__barText">{(100 - person.perc) + "% "}<i className="fa fa-thumbs-down fa-flip-horizontal"></i></strong></div>
             </div>
         )
     }
