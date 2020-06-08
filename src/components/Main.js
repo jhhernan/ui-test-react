@@ -6,10 +6,10 @@ function Main(){
             <header>
                 <h1>Rule of Thumb.</h1>
                 <nav>
-                    <a href="#">Past Trials</a>
-                    <a href="#">How It Works</a>
-                    <a href="#">Log In / Sign Up</a>
-                    <a href="#"><i className="fa fa-search"></i></a>
+                    <a href="past.html">Past Trials</a>
+                    <a href="how.html">How It Works</a>
+                    <a href="/login">Log In / Sign Up</a>
+                    <a href="search.html"><i className="fa fa-search"></i></a>
                 </nav>
             </header>
             <section className="main">

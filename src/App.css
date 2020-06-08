@@ -437,9 +437,13 @@ header nav a {
   .voteContainer {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: right;
   }
 
+  .voteBox {
+    min-width: 400px;  
+    height: 530px; 
+  }
   .info {
       display: none;
     }
@@ -450,6 +454,7 @@ header nav a {
 
   .wrapper {
       height: 600px;
+      width:500px;
   }
   
   header {
@@ -467,6 +472,7 @@ header nav a {
   .main{
       width: 320px;
       height: 300px;
+      margin: 20px;
   }
     
   .main__subtitle{
@@ -485,5 +491,7 @@ header nav a {
       text-align: left;
       padding: 0px 0px 0px 0px;
   }
-
+  .voteSection{
+    margin:0px 10px;
+  }
 } 
