@@ -187,13 +187,14 @@ header nav a {
 }
 
 .voteContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 30px 30px;
 }
 
 .voteBox {
-  min-width: 470px;  
+  max-width: 470px;  
   height: 530px; 
   margin-top: 10px;
   margin-bottom: 40px;
@@ -244,7 +245,7 @@ header nav a {
   height: 30px;
   position: absolute;
   left: 0;
-  top: 302px;
+  top: 285px;
   padding: 4px;
   font-size: 24px;
 }
@@ -273,6 +274,7 @@ header nav a {
   width: 30px;
   height: 30px;
   background: rgba(28,187,180,0.8);
+  cursor: pointer;
 }
 
 .voteBox__btnDown {
@@ -283,6 +285,7 @@ header nav a {
   height: 30px;
   background: rgba(255,173,29,0.8);
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .voteBox__btnVote {
@@ -293,6 +296,7 @@ header nav a {
   margin-left: 10px;
   width: 86px;
   height: 32px;
+  cursor: pointer;
 }
 
 .voteBox__btn--active {

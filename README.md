@@ -1,10 +1,20 @@
-Solution using React.
+
+
+## Solution using React.
 
 
 
-## Available Scripts
+Available Scripts
 
 In the project directory, you can run:
 
 ### `npm start`
 
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.<br />
+You will also see any lint errors in the console.
+
+
+Note: In the branch "login" I develop part of the third point. I use the axios library to interact with the backend server-
