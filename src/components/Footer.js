@@ -2,16 +2,16 @@ import React from 'react';
 
 function Footer(){
     return (
-        <footer class="footer">
-            <section class="footer__terms">
+        <footer className="footer">
+            <section className="footer__terms">
                 <a href="">Terms and Conditions</a>
                 <a href="">Privacy Policy</a>
                 <a href="">Contact Us</a>
             </section>
-            <section class="footer__social">
+            <section className="footer__social">
                 <a href="">Follow Us</a>
-                <a href="www.facebook.com"><i class="fa fa-facebook-square"></i></a>
-                <a href="www.twitter.com"><i class="fa fa-twitter"></i></a>
+                <a href="www.facebook.com"><i className="fa fa-facebook-square"></i></a>
+                <a href="www.twitter.com"><i className="fa fa-twitter"></i></a>
             </section>
         </footer>
     )

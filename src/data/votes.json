@@ -4,8 +4,10 @@
         "up": 50,
         "down": 27,
         "active": "none",
-        "justVoted": false,
-        "percentage": 50
+        "justVoted": false, 
+        "title": "Kanye West",
+        "date": "1 month ago in Entertainment",
+        "description": "Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero."
     },
     {
         "name": "person2",
@@ -13,7 +15,9 @@
         "down": 10,
         "active": "none",
         "justVoted": false,
-        "percentage": 50
+        "title": "Mark Zuckerberg",
+        "date": "1 month ago in Business",
+        "description": "Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero."
      },
     {
         "name": "person3",
@@ -21,7 +25,9 @@
         "down": 27,
         "active": "none",
         "justVoted": false,
-        "percentage": 50
+        "title": "Cristina Fernández de Kirchner",
+        "date": "1 month ago in Politics",
+        "description": "Vestibulum diam ante, portitor a odio eget, rhoncus neque. Aenean eu velit libero." 
      },
      {
         "name": "person4",
@@ -29,6 +35,8 @@
         "down": 5,
         "active": "none",
         "justVoted": false,
-        "percentage": 50
+        "title": "Malala Yousafzai",
+        "date": "1 month ago in Entertainment",
+        "description": "Vestibulum diam ante, porttitor a odio eget, rhoncus neque. Aenean eu velit libero." 
      }
    ]
