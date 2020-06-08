@@ -8,7 +8,7 @@ function Main(){
                 <nav>
                     <a href="past.html">Past Trials</a>
                     <a href="how.html">How It Works</a>
-                    <a href="/login">Log In / Sign Up</a>
+                    <a href="/signin">Log In / Sign Up</a>
                     <a href="search.html"><i className="fa fa-search"></i></a>
                 </nav>
             </header>

@@ -1,21 +1,27 @@
 import React from 'react';
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'; 
 import './App.css';
-import Main from './components/Main';
-import Add from './components/Add';
-import Info from './components/Info';
-import Votes from './components/Votes';
-import Footer from './components/Footer';
+import App1 from './App1';
+import Login from './components/Login';
 
-function App() {
+import SignUp from './components/SignUp';
+
+
+class App extends React.Component {
+    render(){
     return (
         <div>
-            <Main />
-            <Info />
-            <Votes />
-            <Add />
-            <Footer />
+        <Router>
+          <Switch>
+          <Route exact path='/' component={App1}></Route>
+            <Route exact path='/signin' component={Login}></Route>
+            <Route exact path="/signup" component={SignUp}></Route>
+            <Route exact path="*"  component={App1}></Route>
+          </Switch>
+        </Router>
         </div>
     );
+    }
 }
 
 export default App;
